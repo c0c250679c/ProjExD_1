@@ -16,21 +16,26 @@ def main():
     kk_rct = kk_img.get_rect()#練習10－1：こうかとんRectを取得する
     kk_rct.center = 300,200#練習10－2：こうかとんRectの中心座標を設定する
     tmr = 0
-    i = kk_rct.move_ip
+    dx = 0
+    dy = 0
+    
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
         key_lst = pg.key.get_pressed()#練習10－3：全キー状態を取得する
         if key_lst[pg.K_UP]:#もし上ボタンが押されたら
-            i((0,-1))
+            dy = -1
         if key_lst[pg.K_DOWN]:#もし下ボタンが押されたら
-                    i((0,+1))
+            dy = +1
         if key_lst[pg.K_LEFT]:#もし左ボタンが押されたら
-                    i((-1,0))
+            dx = -1
         if key_lst[pg.K_RIGHT]:#もし右ボタンが押されたら
-                    i((+1,0))
+            dx = +1
         
         kk_rct.move_ip((-1,0))
+        
+        kk_rct.move_ip((dx,dy))
+        
 
 
         x = tmr%3200#練習5
